@@ -222,7 +222,7 @@ const TokenPage: React.FC<{ address: string }> = ({ address }) => {
                 <Flex>
                   <NextLinkFromReactRouter to={`/add/${address}?chain=${CHAIN_QUERY_NAME[chainId]}`}>
                     <Button mr="8px" variant="secondary" height="48px" px="12px">
-                      Add Liquidity
+                      Add V3 Liquidity
                     </Button>
                   </NextLinkFromReactRouter>
                   <NextLinkFromReactRouter

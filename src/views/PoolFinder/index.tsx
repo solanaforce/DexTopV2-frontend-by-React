@@ -177,7 +177,7 @@ export default function PoolFinder() {
                           height="36px"
                           mt="12px"
                         >
-                          Add Liquidity
+                          Add V2 Liquidity
                         </Button>
                       </AutoColumn>
                     </CardBody>

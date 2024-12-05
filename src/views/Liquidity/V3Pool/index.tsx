@@ -969,8 +969,8 @@ function PositionHistory_({
 
 type PositionHistoryType = 'mint' | 'burn' | 'collect'
 const positionHistoryTypeText = {
-  mint: 'Add Liquidity',
-  burn: 'Remove Liquidity',
+  mint: 'Add V3 Liquidity',
+  burn: 'Remove V3 Liquidity',
   collect: 'Collect fee',
 } satisfies Record<PositionHistoryType, ReactNode>
 

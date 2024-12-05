@@ -180,7 +180,7 @@ export default function V3Pool() {
 							height="48px"
 							variant='primary'
 						>
-							Add Liquidity
+							Add V3 Liquidity
 						</Button>
 					</Flex>
         </AppBody>

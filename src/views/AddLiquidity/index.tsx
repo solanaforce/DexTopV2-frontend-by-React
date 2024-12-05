@@ -213,7 +213,7 @@ export default function AddLiquidity({ currencyA, currencyB }) {
       )
       .catch((err) => {
         if (err && err.code !== 4001) {
-          console.error(`Add Liquidity failed`, err, args, value)
+          console.error(`Add V2 Liquidity failed`, err, args, value)
         }
         setLiquidityState({
           attemptingTxn: false,

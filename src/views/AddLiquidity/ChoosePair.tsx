@@ -27,8 +27,8 @@ export function ChoosePair({
   return (
     <>
       <AppHeader
-        title='Add Liquidity'
-        backTo="/pool"
+        title='Add V2 Liquidity'
+        backTo="/pool/v2"
       />
       <CardBody mt="10px">
         <Box>
@@ -74,7 +74,7 @@ export function ChoosePair({
           disabled={!isValid}
           height="48px"
         >
-          {error ?? 'Add Liquidity'}
+          {error ?? 'Add V2 Liquidity'}
         </CommitButton>
       )}
     </>

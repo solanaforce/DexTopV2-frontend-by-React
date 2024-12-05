@@ -78,7 +78,7 @@ export function AddLiquidityV3Modal({
       >
         <Modal
           bodyPadding="8px"
-          title='Add Liquidity'
+          title='Add V3 Liquidity'
           headerRightSlot={
             <AutoRow width="auto" gap="8px">
               {/* <AprCalculator

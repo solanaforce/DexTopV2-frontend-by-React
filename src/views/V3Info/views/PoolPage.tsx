@@ -219,7 +219,7 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
                   }`}
                 >
                   <Button mr="8px" variant="secondary" height="48px" px="12px">
-                    Add Liquidity
+                    Add V3 Liquidity
                   </Button>
                 </NextLinkFromReactRouter>
                 <NextLinkFromReactRouter

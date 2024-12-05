@@ -334,7 +334,7 @@ export default function V3FormView({
   const [onPresentAddLiquidityModal] = useModal(
     <TransactionConfirmationModal
       minWidth={['100%', null, '420px']}
-      title='Add Liquidity'
+      title='Add V3 Liquidity'
       customOnDismiss={handleDismissConfirmation}
       attemptingTxn={attemptingTxn}
       hash={txHash}

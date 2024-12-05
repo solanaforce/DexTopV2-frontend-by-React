@@ -313,7 +313,7 @@ export function AddLiquidityV3Layout({
   const baseCurrency = useCurrency(currencyIdA)
   const quoteCurrency = useCurrency(currencyIdB)
 
-  const title = 'Add Liquidity'
+  const title = 'Add V3 Liquidity'
 
   return (
     <Page>
