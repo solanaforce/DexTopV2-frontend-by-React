@@ -309,7 +309,7 @@ function FullPositionCard({
             <Flex justifyContent="right">
               <Button
                 as={NextLinkFromReactRouter}
-                to={`/add/${currencyId(currency0)}/${currencyId(currency1)}?step=1`}
+                to={`/add/v2?currency=${currencyId(currency0)}&currency=${currencyId(currency1)}`}
                 variant="text"
                 width="100px"
                 height="36px"
@@ -319,7 +319,7 @@ function FullPositionCard({
               </Button>
               <Button
                 as={NextLinkFromReactRouter}
-                to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`}
+                to={`/remove/v2?currency=${currencyId(currency0)}&currency=${currencyId(currency1)}`}
                 variant="text"
                 width="120px"
                 height="36px"
