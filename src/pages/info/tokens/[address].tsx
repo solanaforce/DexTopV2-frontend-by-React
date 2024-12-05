@@ -8,7 +8,7 @@ const TokenPage = () => {
   const { address: tokenId } = router.query
 
 	const parsedTokenId = tokenId ? tokenId as string : ""
-  console.log(parsedTokenId)
+  // console.log(parsedTokenId)
 
   return <Token address={parsedTokenId} />
 }

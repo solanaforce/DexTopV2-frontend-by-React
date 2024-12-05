@@ -300,7 +300,7 @@ export async function fetchTopPools(dataClient: GraphQLClient, chainId: ChainId,
   try {
     const topPoolAddress = await fetchTopPoolAddresses(dataClient, chainId)
     const data = await fetchPoolDatas(dataClient, topPoolAddress.addresses ?? [], blocks)
-    console.log(data)
+    // console.log(data)
     return data
   } catch (e) {
     console.error(e)

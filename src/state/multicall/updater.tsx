@@ -113,7 +113,7 @@ export default function Updater(): null {
     if (outdatedCallKeys.length === 0) return
     const calls = outdatedCallKeys.map((key) => parseCallKey(key))
 
-    console.log(outdatedCallKeys)
+    // console.log(outdatedCallKeys)
 
     const chunkedCalls = chunkArray(calls, CALL_CHUNK_SIZE)
 
