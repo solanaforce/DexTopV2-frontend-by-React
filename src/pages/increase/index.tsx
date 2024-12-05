@@ -1,4 +1,4 @@
-import { USDT } from 'libraries/tokens'
+import { GTOKEN } from 'libraries/tokens'
 import { useCurrency } from 'hooks/Tokens'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { useRouter } from 'next/router'
@@ -15,7 +15,7 @@ const AddLiquidityPage = () => {
 
   const [currencyIdA, currencyIdB] = router.query.currency || [
     native.symbol,
-    USDT[chainId]?.address,
+    GTOKEN[chainId].address,
   ]
 
   const currencyA = useCurrency(currencyIdA)

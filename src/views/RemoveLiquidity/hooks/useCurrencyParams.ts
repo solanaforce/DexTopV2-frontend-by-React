@@ -1,4 +1,4 @@
-import { USDC, USDT } from 'libraries/tokens'
+import { USDC, GTOKEN } from 'libraries/tokens'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { useRouter } from 'next/router'
@@ -14,7 +14,7 @@ export function useCurrencyParams(): {
   const [currencyIdA, currencyIdB] = router.isReady
     ? router.query.currency || [
         native.symbol,
-        USDT[chainId]?.address || USDC[chainId]?.address,
+        GTOKEN[chainId]?.address || USDC[chainId]?.address,
       ]
     : [undefined, undefined, undefined]
 

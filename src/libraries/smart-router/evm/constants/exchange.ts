@@ -23,7 +23,7 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
-  [ChainId.ETHEREUM]: [WNATIVE[ChainId.ETHEREUM], USDC[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM], WBTC_ETH],
+  [ChainId.ETHEREUM]: [WNATIVE[ChainId.ETHEREUM], ethereumTokens.gtoken, ethereumTokens.dai, ethereumTokens.hex],
 }
 
 /**

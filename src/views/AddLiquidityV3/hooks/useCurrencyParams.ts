@@ -1,4 +1,4 @@
-import { USDC, USDT } from 'libraries/tokens'
+import { USDC, GTOKEN } from 'libraries/tokens'
 import { FeeAmount } from 'libraries/v3-sdk'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useNativeCurrency from 'hooks/useNativeCurrency'
@@ -16,7 +16,7 @@ export function useCurrencyParams(): {
   const [currencyIdA, currencyIdB, feeAmountFromUrl] = router.isReady
     ? router.query.currency || [
         native.symbol,
-        USDT[chainId]?.address || USDC[chainId]?.address,
+        GTOKEN[chainId]?.address || USDC[chainId]?.address,
       ]
     : [undefined, undefined, undefined]
 

@@ -4,7 +4,7 @@ import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 import currencyId from 'utils/currencyId'
-import { USDT } from 'libraries/tokens'
+import { GTOKEN } from 'libraries/tokens'
 import { getAddress } from 'viem'
 
 export const useCurrencySelectRoute = () => {
@@ -13,7 +13,7 @@ export const useCurrencySelectRoute = () => {
   const { chainId } = useActiveChainId()
   const [currencyIdA, currencyIdB] = router.query.currency || [
     native.symbol,
-    USDT[chainId]?.address,
+    GTOKEN[chainId].address,
   ]
 
   // const handleCurrencyASelect = useCallback(

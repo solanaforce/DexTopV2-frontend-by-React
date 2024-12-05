@@ -225,7 +225,7 @@ export function useDefaultsFromURLSearch():
 
   useEffect(() => {
     if (!chainId || !native) return
-    if (!USDT[chainId]) return
+    if (!GTOKEN[chainId]) return
     const parsed = queryParametersToSwapState(query, native.symbol, GTOKEN[chainId]?.address)
 
     dispatch(

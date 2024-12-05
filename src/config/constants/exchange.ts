@@ -20,18 +20,18 @@ export const SUGGESTED_BASES: ChainTokenList = {
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
-  [ChainId.ETHEREUM]: [WNATIVE[ChainId.ETHEREUM], USDC[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM], WBTC_ETH],
+  [ChainId.ETHEREUM]: [WNATIVE[ChainId.ETHEREUM], ethereumTokens.hex, ethereumTokens.dai, ethereumTokens.gtoken],
 }
 
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
-	[ChainId.ETHEREUM]: [USDC[ChainId.ETHEREUM], WNATIVE[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM], WBTC_ETH],
+	[ChainId.ETHEREUM]: [ethereumTokens.dai, ethereumTokens.hex, ethereumTokens.gtoken, WNATIVE[ChainId.ETHEREUM]],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
   [ChainId.ETHEREUM]: [
-    [WNATIVE[ChainId.ETHEREUM], USDC[ChainId.ETHEREUM]],
-    [WBTC_ETH, WNATIVE[ChainId.ETHEREUM]],
-    [WNATIVE[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM]],
+    [WNATIVE[ChainId.ETHEREUM], ethereumTokens.gtoken],
+    [ethereumTokens.hex, WNATIVE[ChainId.ETHEREUM]],
+    [ethereumTokens.gtoken, ethereumTokens.dai],
   ],
 }
 

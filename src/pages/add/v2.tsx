@@ -1,11 +1,7 @@
-import { USDT } from 'libraries/tokens'
 import { useCurrency } from 'hooks/Tokens'
-import useNativeCurrency from 'hooks/useNativeCurrency'
 
 import { useRouter } from 'next/router'
 import { useEffect, useCallback } from 'react'
-import { useAppDispatch } from 'state'
-import { resetMintState } from 'state/mint/actions'
 import AddLiquidity from 'views/AddLiquidity'
 import { CHAIN_IDS } from 'utils/wagmi'
 import { useCurrencyParams } from 'views/AddLiquidity/hooks/useCurrencyParams'
