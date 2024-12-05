@@ -171,7 +171,7 @@ export default function PoolFinder() {
                         <Text textAlign="center">You don’t have liquidity in this pair yet.</Text>
                         <Button
                           as={NextLinkFromReactRouter}
-                          to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}
+                          to={`/add/v2?currency=${currencyId(currency0)}&currency=${currencyId(currency1)}`}
                           variant="secondary"
                           width="100%"
                           height="36px"
@@ -190,7 +190,7 @@ export default function PoolFinder() {
                       <Text textAlign="center">No pair found.</Text>
                       <Button
                         as={NextLinkFromReactRouter}
-                        to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}
+                        to={`/add/v2?currency=${currencyId(currency0)}&currency=${currencyId(currency1)}`}
                         variant="secondary"
                         width="100%"
                         height="36px"
