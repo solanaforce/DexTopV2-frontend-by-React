@@ -65,9 +65,9 @@ export function useBestAMMTrade({ type = 'quoter', ...params }: useBestAMMTradeO
     [type, isWrapping],
   )
 
-  // const isQuoterAPIEnabled = useMemo(() => Boolean(!isWrapping && type === 'api'), [isWrapping, type])
+  const isQuoterAPIEnabled = useMemo(() => Boolean(!isWrapping && type === 'api'), [isWrapping, type])
 
-  // const apiAutoRevalidate = typeof autoRevalidate === 'boolean' ? autoRevalidate : isQuoterAPIEnabled
+  const apiAutoRevalidate = typeof autoRevalidate === 'boolean' ? autoRevalidate : isQuoterAPIEnabled
 
   // switch to api when it's stable
   // const _bestTradeFromQuoterApi = useBestAMMTradeFromQuoterApi({
@@ -75,26 +75,26 @@ export function useBestAMMTrade({ type = 'quoter', ...params }: useBestAMMTradeO
   //   enabled: Boolean(enabled && isQuoterAPIEnabled),
   //   autoRevalidate: apiAutoRevalidate,
   // })
-  // const bestTradeFromQuoterApi = useBestAMMTradeFromQuoterWorker2({
-  //   ...params,
-  //   enabled: Boolean(enabled && isQuoterAPIEnabled),
-  //   autoRevalidate: apiAutoRevalidate,
-  // })
+  const bestTradeFromQuoterApi = useBestAMMTradeFromQuoterWorker2({
+    ...params,
+    enabled: Boolean(enabled && isQuoterAPIEnabled),
+    autoRevalidate: apiAutoRevalidate,
+  })
 
   const quoterAutoRevalidate = typeof autoRevalidate === 'boolean' ? autoRevalidate : isQuoterEnabled
 
-  const bestTradeFromQuoterWorker = useBestAMMTradeFromQuoterWorker2({
+  const bestTradeFromQuoterWorker = useBestAMMTradeFromQuoterWorker({
     ...params,
-    // enabled: Boolean(enabled && isQuoterEnabled && !isQuoterAPIEnabled),
-    enabled: Boolean(enabled && isQuoterEnabled),
+    enabled: Boolean(enabled && isQuoterEnabled && !isQuoterAPIEnabled),
+    // enabled: Boolean(enabled && isQuoterEnabled),
     autoRevalidate: quoterAutoRevalidate,
   })
 
   return useMemo(
-    // () => (isQuoterAPIEnabled ? bestTradeFromQuoterApi : bestTradeFromQuoterWorker),
-    // [bestTradeFromQuoterApi, bestTradeFromQuoterWorker, isQuoterAPIEnabled],
-    () => (bestTradeFromQuoterWorker),
-    [bestTradeFromQuoterWorker],
+    () => (isQuoterAPIEnabled ? bestTradeFromQuoterApi : bestTradeFromQuoterWorker),
+    [bestTradeFromQuoterApi, bestTradeFromQuoterWorker, isQuoterAPIEnabled],
+    // () => (bestTradeFromQuoterWorker),
+    // [bestTradeFromQuoterWorker],
   )
 }
 

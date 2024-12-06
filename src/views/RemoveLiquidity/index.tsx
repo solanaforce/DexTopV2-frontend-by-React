@@ -39,6 +39,8 @@ import { useTransactionDeadline } from 'hooks/useTransactionDeadline'
 import { useTransactionAdder } from 'state/transactions/hooks'
 import { calculateGasMargin } from 'utils'
 import { calculateSlippageAmount, useRouterContract } from 'utils/exchange'
+import { splitSignature } from 'utils/splitSignature'
+import { isUserRejected } from 'utils/reject'
 import { currencyId } from 'utils/currencyId'
 import { useApproveCallback, ApprovalState } from 'hooks/useApproveCallback'
 import Dots from 'components/Loader/Dots'
@@ -47,6 +49,7 @@ import { Field } from 'state/burn/actions'
 import { useGasPrice, useUserSlippageTolerance } from 'state/user/hooks'
 import { InternalLink } from './components/InternalLink'
 import ConfirmLiquidityModal from '../Swap/components/ConfirmRemoveLiquidityModal'
+import { useSignTypedData } from 'wagmi'
 
 const BorderCard = styled.div`
   border: solid 1px ${({ theme }) => theme.colors.cardBorder};
@@ -61,6 +64,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
   const { isMobile } = useMatchBreakpoints()
   const { account, chainId } = useAccountActiveChain()
   const { isWrongNetwork } = useActiveWeb3React()
+  const { signTypedDataAsync } = useSignTypedData()
   const { toastError } = useToast()
   const [tokenA, tokenB] = useMemo(() => [currencyA?.wrapped, currencyB?.wrapped], [currencyA, currencyB])
 
@@ -92,7 +96,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
   })
 
   // txn values
-  const deadline = useTransactionDeadline()
+  const [deadline] = useTransactionDeadline()
   const [allowedSlippage] = useUserSlippageTolerance()
 
   const formattedAmounts = {
@@ -120,14 +124,70 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
   )
 
   async function onAttemptToApprove() {
-    if (!pairContractRead || !pair || !deadline) throw new Error('missing dependencies')
+    if (!pairContractRead || !pair || !signTypedDataAsync || !deadline) throw new Error('missing dependencies')
     const liquidityAmount = parsedAmounts[Field.LIQUIDITY]
     if (!liquidityAmount) {
       toastError('Error', 'Missing liquidity amount')
       throw new Error('missing liquidity amount')
     }
 
-    approveCallback()
+    if (!account) return
+
+    // try to gather a signature for permission
+    const nonce = await pairContractRead.read.nonces([account])
+
+    const EIP712Domain = [
+      { name: 'name', type: 'string' },
+      { name: 'version', type: 'string' },
+      { name: 'chainId', type: 'uint256' },
+      { name: 'verifyingContract', type: 'address' },
+    ]
+    const domain = {
+      name: 'DexTop LP',
+      version: '1',
+      chainId,
+      verifyingContract: pair.liquidityToken.address as `0x${string}`,
+    }
+    const Permit = [
+      { name: 'owner', type: 'address' },
+      { name: 'spender', type: 'address' },
+      { name: 'value', type: 'uint256' },
+      { name: 'nonce', type: 'uint256' },
+      { name: 'deadline', type: 'uint256' },
+    ]
+    const message = {
+      owner: account,
+      spender: ROUTER_ADDRESS[chainId],
+      value: liquidityAmount.quotient.toString(),
+      nonce,
+      deadline: Number(deadline),
+    }
+
+    signTypedDataAsync({
+      // @ts-ignore
+      domain,
+      primaryType: 'Permit',
+      types: {
+        EIP712Domain,
+        Permit,
+      },
+      message,
+    })
+      .then(splitSignature)
+      .then((signature) => {
+        setSignatureData({
+          v: signature.v,
+          r: signature.r,
+          s: signature.s,
+          deadline: Number(deadline),
+        })
+      })
+      .catch((err) => {
+        // for all errors other than 4001 (EIP-1193 user rejected request), fall back to manual approve
+        if (!isUserRejected(err)) {
+          approveCallback()
+        }
+      })
   }
 
   // wrapped onUserInput to clear signatures
@@ -358,6 +418,11 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
     (value) => setInnerLiquidityPercentage(Math.ceil(value)),
     [setInnerLiquidityPercentage],
   )
+
+  // signatureData === null && approval !== ApprovalState.APPROVED) ||
+  //                   (approval !== ApprovalState.APPROVED)
+
+  // console.log(ApprovalState.APPROVED)
 
   const [onPresentRemoveLiquidity] = useModal(
     <ConfirmLiquidityModal
@@ -664,8 +729,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
                   width="100%"
                   disabled={
                     !isValid ||
-                    (signatureData === null && approval !== ApprovalState.APPROVED) ||
-                    (approval !== ApprovalState.APPROVED)
+                    (signatureData === null && approval !== ApprovalState.APPROVED)
                   }
                   height="48px"
                 >

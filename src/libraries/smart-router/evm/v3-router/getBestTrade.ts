@@ -70,8 +70,6 @@ async function getBestRoutes(
     protocols: allowedPoolTypes,
   })
 
-  console.log(candidatePools)
-
   let baseRoutes = computeAllRoutes(inputCurrency, outputCurrency, candidatePools, maxHops)
 
   // Do not support mix route on exact output

@@ -44,8 +44,8 @@ export const TradeSummary = memo(function TradeSummary({
         <RowFixed>
           <Text fontSize="14px">
             {isExactIn
-              ? `${formatAmount(slippageAdjustedAmounts[Field.OUTPUT], 4)} ${outputAmount?.currency.symbol}` ?? '-'
-              : `${formatAmount(slippageAdjustedAmounts[Field.INPUT], 4)} ${inputAmount?.currency.symbol}` ?? '-'}
+              ? `${formatAmount(slippageAdjustedAmounts[Field.OUTPUT], 4)} ${outputAmount?.currency.symbol}`
+              : `${formatAmount(slippageAdjustedAmounts[Field.INPUT], 4)} ${inputAmount?.currency.symbol}`}
           </Text>
         </RowFixed>
       </RowBetween>

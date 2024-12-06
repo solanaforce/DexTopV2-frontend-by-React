@@ -113,8 +113,6 @@ export default function Updater(): null {
     if (outdatedCallKeys.length === 0) return
     const calls = outdatedCallKeys.map((key) => parseCallKey(key))
 
-    // console.log(outdatedCallKeys)
-
     const chunkedCalls = chunkArray(calls, CALL_CHUNK_SIZE)
 
     if (cancellations.current?.blockNumber !== currentBlock) {
@@ -193,10 +191,10 @@ export default function Updater(): null {
 
             // when revert error, should not update new state and keep current state.
             if (error instanceof CancelledError || error?.message?.indexOf(REVERT_STR) >= 0) {
-              console.debug('Cancelled fetch for blockNumber', currentBlock)
+              // console.debug('Cancelled fetch for blockNumber', currentBlock)
               return
             }
-            console.error('Failed to fetch multicall chunk', chunk, chainId, error, currentBlock)
+            // console.error('Failed to fetch multicall chunk', chunk, chainId, error, currentBlock)
             dispatch(
               errorFetchingMulticallResults({
                 calls: chunk,

@@ -7,11 +7,11 @@ import { Variant, variants } from "./types";
 
 const MenuIconWrapper = styled.div<{ borderColor: keyof Colors }>`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.background};
-  border-color: ${({ theme, borderColor }) => theme.colors[borderColor]};
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 2px;
+  background-color: ${({ theme }) => theme.colors.tertiary};
+  // border-color: ${({ theme, borderColor }) => theme.colors[borderColor]};
+  // border-radius: 50%;
+  // border-style: solid;
+  // border-width: 2px;
   display: flex;
   height: 32px;
   justify-content: center;

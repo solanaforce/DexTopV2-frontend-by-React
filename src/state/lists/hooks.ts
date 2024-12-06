@@ -171,8 +171,6 @@ export function useAllLists(): {
 
   const urls = useAtomValue(selectorByUrlsAtom)
 
-  console.log(urls)
-
   return useMemo(
     () => _pickBy(urls, (_, url) => chainId && MULTI_CHAIN_LIST_URLS[chainId]?.includes(url)),
     [chainId, urls],

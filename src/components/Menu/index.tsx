@@ -11,6 +11,7 @@ import { getActiveMenuItem, getActiveSubMenuItem } from './utils'
 import { footerLinks } from './config/footerLinks'
 import GlobalSettings from './GlobalSettings'
 import { SettingsMode } from './GlobalSettings/types'
+import UserMenu from './UserMenu'
 
 const LinkComponent = (linkProps) => {
   return <NextLinkFromReactRouter to={linkProps.href} {...linkProps} prefetch={false} />
@@ -32,7 +33,8 @@ const Menu = (props) => {
         linkComponent={LinkComponent}
         rightSide={
           <>
-            <ConnectWalletButton />
+            {/* <ConnectWalletButton /> */}
+            <UserMenu />
             <GlobalSettings mode={SettingsMode.DEXTOP} />
           </>
         }

@@ -8,7 +8,7 @@ import {
   ONE,
   ZERO,
   _10000,
-  _9975,
+  _9971,
   BigintIsh,
   MINIMUM_LIQUIDITY,
 } from 'libraries/swap-sdk-core'
@@ -168,7 +168,7 @@ export class Pair {
     }
     const inputReserve = this.reserveOf(inputAmount.currency)
     const outputReserve = this.reserveOf(inputAmount.currency.equals(this.token0) ? this.token1 : this.token0)
-    const inputAmountWithFee = inputAmount.quotient * _9975
+    const inputAmountWithFee = inputAmount.quotient * _9971
     const numerator = inputAmountWithFee * outputReserve.quotient
     const denominator = inputReserve.quotient * _10000 + inputAmountWithFee
     const outputAmount = CurrencyAmount.fromRawAmount(
@@ -194,7 +194,7 @@ export class Pair {
     const outputReserve = this.reserveOf(outputAmount.currency)
     const inputReserve = this.reserveOf(outputAmount.currency.equals(this.token0) ? this.token1 : this.token0)
     const numerator = inputReserve.quotient * outputAmount.quotient * _10000
-    const denominator = (outputReserve.quotient - outputAmount.quotient) * _9975
+    const denominator = (outputReserve.quotient - outputAmount.quotient) * _9971
     const inputAmount = CurrencyAmount.fromRawAmount(
       outputAmount.currency.equals(this.token0) ? this.token1 : this.token0,
       numerator / denominator + ONE

@@ -23,6 +23,7 @@ export const FIVE = 5n
 export const TEN = 10n
 export const _100 = 100n
 export const _9975 = 9975n
+export const _9971 = 9971n
 export const _10000 = 10000n
 
 export const MaxUint256 = BigInt('0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff')
