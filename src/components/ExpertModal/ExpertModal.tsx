@@ -49,6 +49,7 @@ export const ExpertModal: React.FC<React.PropsWithChildren<ExpertModalProps>> = 
         <Button
           mb="8px"
           height="36px"
+          variant="primary"
           id="confirm-expert-mode"
           onClick={() => {
             // eslint-disable-next-line no-alert
