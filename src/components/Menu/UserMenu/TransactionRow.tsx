@@ -62,8 +62,6 @@ const TransactionRow: React.FC<React.PropsWithChildren<TransactionRowProps>> = (
     return null
   }
 
-  console.log(txn.translatableSummary)
-
   return (
     <TxnLink onClick={onClickTransaction}>
       <TxnIcon>{renderIcon(txn)}</TxnIcon>

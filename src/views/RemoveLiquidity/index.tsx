@@ -419,11 +419,6 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
     [setInnerLiquidityPercentage],
   )
 
-  // signatureData === null && approval !== ApprovalState.APPROVED) ||
-  //                   (approval !== ApprovalState.APPROVED)
-
-  // console.log(ApprovalState.APPROVED)
-
   const [onPresentRemoveLiquidity] = useModal(
     <ConfirmLiquidityModal
       title='You will receive'

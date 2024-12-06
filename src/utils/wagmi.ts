@@ -22,7 +22,7 @@ const metadata = {
 
 export const config = defaultWagmiConfig({
   chains,
-  projectId: "400ed8fdff62d9239dfc475374de9c4f",
+  projectId: "0b05488dcd33a3130e5f231a1d44d6f3",
   metadata,
   ssr: true,
   storage: createStorage({

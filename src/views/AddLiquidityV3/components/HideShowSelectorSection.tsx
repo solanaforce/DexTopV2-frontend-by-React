@@ -30,11 +30,12 @@ export default function HideShowSelectorSection({
   heading,
   content,
 }: HideShowSelectorSectionPropsType) {
+  console.log(showOptions)
   return (
     <LightGreyCard padding="8px" style={{ height: 'fit-content' }}>
       <AutoRow justifyContent="space-between" marginBottom={showOptions ? '8px' : '0px'}>
         {heading ?? <div />}
-        {noHideButton || (
+        {/* {noHideButton || (
           <Button
             scale="sm"
             onClick={() => setShowOptions((prev) => !prev)}
@@ -52,7 +53,7 @@ export default function HideShowSelectorSection({
           >
             {showOptions ? 'Hide' : 'More'}
           </Button>
-        )}
+        )} */}
       </AutoRow>
       {showOptions && content}
     </LightGreyCard>

@@ -18,9 +18,9 @@ export function TransactionErrorContent({
     <Wrapper>
       <AutoColumn justify="center">
         <ErrorIcon color="failure" width="64px" />
-        <Text color="failure" style={{ textAlign: "center", width: "85%", wordBreak: "break-word" }}>
+        {/* <Text color="failure" style={{ textAlign: "center", width: "85%", wordBreak: "break-word" }}>
           {message}
-        </Text>
+        </Text> */}
       </AutoColumn>
 
       {onDismiss ? (

@@ -1,6 +1,5 @@
 export const baseColors = {
   white: "white",
-  failure: "#272425",
   failure33: "#ED4B9E33",
   primary0f: "#FFAC260f",
   primary3D: "#FFAC263d",
@@ -26,6 +25,7 @@ export const lightColors = {
   ...baseColors,
   ...additionalColors,
   primary: "#000000",
+  failure: "#272727",
   secondary: "#4d4d4d",
   secondary80: "#4d4d4d80",
   background: "#dfdfdf",
@@ -61,6 +61,7 @@ export const darkColors = {
   ...baseColors,
   ...additionalColors,
   primary: "#ffffff",
+  failure: "#cacaca",
   secondary: "#dfdfdf",
   secondary80: "#dfdfdf80",
   background: "#686c74",
