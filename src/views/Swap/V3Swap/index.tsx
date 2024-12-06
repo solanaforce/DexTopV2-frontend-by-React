@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useCallback, useMemo } from 'react'
-import { ArrowDownIcon, ArrowUpDownIcon, Box, Flex, IconButton } from 'components'
+import { ArrowDownIcon, ArrowUpDownIcon, Box, Button, Flex, IconButton } from 'components'
 import Page from 'components/Layout/Page'
 import { AppBody } from 'components/App'
 import CurrencyInputPanel from 'components/CurrencyInputPanel'
@@ -18,14 +18,15 @@ import { formatAmount } from 'utils/formatFractions'
 import { CommonBasesType } from 'components/SearchModal/types'
 import { AutoRow } from 'components/Layout/Row'
 import { iconDownClass, iconUpDownClass, switchButtonClass } from 'theme/css/SwapWidget.css'
-import { useIsWrapping, useSwapBestTrade } from './hooks'
+import { useAllowRecipient, useIsWrapping, useSwapBestTrade } from './hooks'
 import CurrencyInputHeader from '../components/CurrencyInputHeader'
 import { Wrapper } from './components/styleds'
 import { TradeDetails } from './containers/TradeDetails'
 import { SwapCommitButton } from './containers/SwapCommitButton'
+import { Recipient } from './containers/Recipient'
 
 const StyledBox = styled(Box)`
-  background: rgb(27, 28, 29);
+  // background: rgb(27, 28, 29);
   border-radius: 8px;
 `
 
@@ -44,6 +45,7 @@ function V3SwapForm() {
   const [inputAmount, outputAmount] = [trade?.inputAmount, trade?.outputAmount]
 
   const {
+    recipient,
     independentField,
     typedValue,
     [Field.INPUT]: { currencyId: inputCurrencyId },
@@ -53,7 +55,7 @@ function V3SwapForm() {
   const isWrapping = useIsWrapping()
   const inputCurrency = useCurrency(inputCurrencyId)
   const outputCurrency = useCurrency(outputCurrencyId)
-  const { onSwitchTokens, onCurrencySelection, onUserInput } = useSwapActionHandlers()
+  const { onSwitchTokens, onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
   const [inputBalance] = useCurrencyBalances(account as string, [inputCurrency, outputCurrency])
   const maxAmountInput = useMemo(() => maxAmountSpend(inputBalance), [inputBalance])
   const loadedUrlParams = useDefaultsFromURLSearch()
@@ -112,6 +114,8 @@ function V3SwapForm() {
   const inputLoading = typedValue ? !isTypingInput && isLoading : false
   const outputLoading = typedValue ? isTypingInput && isLoading : false
 
+  const allowRecipient = useAllowRecipient()
+
   return (
     <Page>
       <Flex justifyContent="center" mt="40px">
@@ -137,7 +141,7 @@ function V3SwapForm() {
               showBUSD
               commonBasesType={CommonBasesType.SWAP_LIMITORDER}
             />
-            <AutoRow justify='center' my="-22px" mx="auto" zIndex="2">
+            <AutoRow justify='center' my="8px" mx="auto" zIndex="2">
               <StyledBox>
                 <StyledBox1>
                   <IconButton 
@@ -156,6 +160,11 @@ function V3SwapForm() {
                   </IconButton>
                 </StyledBox1>
               </StyledBox>
+              {allowRecipient && recipient === null ? (
+                <Button variant="text" id="add-recipient-button" onClick={() => onChangeRecipient('')}>
+                  + Add a send (optional)
+                </Button>
+              ) : null}
             </AutoRow>
             <CurrencyInputPanel
               value={isWrapping ? typedValue : outputValue}
@@ -171,6 +180,7 @@ function V3SwapForm() {
               commonBasesType={CommonBasesType.SWAP_LIMITORDER}
             />
           </Wrapper>
+          <Recipient />
           <SwapCommitButton trade={trade ?? undefined} tradeError={error ?? undefined} tradeLoading={!tradeLoaded} />
           <TradeDetails loaded={tradeLoaded} trade={trade} />
         </AppBody>

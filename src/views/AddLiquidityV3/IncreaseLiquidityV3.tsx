@@ -42,9 +42,9 @@ import { V3SubmitButton } from './components/V3SubmitButton'
 import { useV3FormState } from './formViews/V3FormView/form/reducer'
 
 export const BodyWrapper = styled(Card)`
-  background: ${({theme}) => theme.colors.background};
-  border: 1px solid ${({theme}) => theme.colors.backgroundAlt};
-  border-radius: 24px;
+  // background: ${({theme}) => theme.colors.background};
+  border: 3px solid ${({theme}) => theme.colors.textDisabled};
+  border-radius: 8px;
   padding: 4px 12px;
   max-width: 464px;
   width: 100%;
@@ -61,7 +61,9 @@ export default function IncreaseLiquidityV3({ currencyA: baseCurrency, currencyB
   const { sendTransactionAsync } = useSendTransaction()
   const [attemptingTxn, setAttemptingTxn] = useState<boolean>(false) // clicked confirm
 
-  const [, , feeAmountFromUrl, tokenId] = router.query.currency || []
+  // const [, , feeAmountFromUrl, tokenId] = router.query.currency || []
+  const feeAmountFromUrl = router.query.fee as string ?? "0"
+  const tokenId = router.query.tokenId as string ?? "0"
   const expertMode = useIsExpertMode()
 
   const { account, chainId, isWrongNetwork } = useActiveWeb3React()
@@ -322,7 +324,7 @@ export default function IncreaseLiquidityV3({ currencyA: baseCurrency, currencyB
       <Flex justifyContent="center" mt="40px">
         <BodyWrapper>
           <AppHeader
-            backTo={`/pool/${tokenId}`}
+            backTo={`/pool/id?tokenId=${tokenId}`}
             title={`Add ${currencies[Field.CURRENCY_A]?.symbol ?? ''}-${currencies[Field.CURRENCY_B]?.symbol ?? ''} Liquidity`}
             noConfig
           />{' '}

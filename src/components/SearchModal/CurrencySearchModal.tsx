@@ -4,6 +4,7 @@ import { ModalContainer, ModalHeader, ModalTitle, ModalBackButton, ModalBody, Mo
 import { ImportList } from 'widgets/ImportList'
 import { useMatchBreakpoints } from 'contexts'
 import { Text } from 'components/Text'
+import { Button } from 'components/Button'
 import styled from 'styled-components'
 import { useListState } from 'state/lists/lists'
 import { useAllLists } from 'state/lists/hooks'
@@ -15,6 +16,13 @@ import ImportToken from './ImportToken'
 import Manage from './Manage'
 import { CurrencyModalView } from './types'
 
+const Footer = styled.div`
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.backgroundAlt};
+  text-align: center;
+  align-items: center;
+`
+
 const StyledModalContainer = styled(ModalContainer)`
   width: 100%;
   min-width: 320px;
@@ -23,7 +31,7 @@ const StyledModalContainer = styled(ModalContainer)`
 `
 
 const StyledModalBody = styled(ModalBody)`
-  padding: 10px 20px 20px 20px;
+  padding: 10px 20px 5px 20px;
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -168,6 +176,18 @@ export default function CurrencySearchModal({
           />
         ) : (
           ''
+        )}
+        {modalView === CurrencyModalView.search && (
+          <Footer>
+            <Button
+              scale="sm"
+              variant="text"
+              onClick={() => setModalView(CurrencyModalView.manage)}
+              className="list-token-manage-button"
+            >
+              Manage Tokens
+            </Button>
+          </Footer>
         )}
       </StyledModalBody>
     </StyledModalContainer>

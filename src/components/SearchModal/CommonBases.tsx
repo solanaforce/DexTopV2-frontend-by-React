@@ -10,7 +10,8 @@ import { CurrencyLogo } from '../Logo'
 const ButtonWrapper = styled.div`
   display: inline-block;
   vertical-align: top;
-  margin-right: 2px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 `
 
 const BaseWrapper = styled.div<{ disable?: boolean }>`
@@ -27,7 +28,7 @@ const BaseWrapper = styled.div<{ disable?: boolean }>`
 `
 
 const RowWrapper = styled.div`
-  white-space: nowrap;
+  // white-space: nowrap;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;

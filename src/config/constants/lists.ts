@@ -3,6 +3,8 @@ import { ChainId } from "config/chains"
 export const COINGECKO = 'https://tokens.pancakeswap.finance/coingecko.json'
 export const UNISWAP = 'https://cloudflare-ipfs.com/ipns/tokens.uniswap.org'
 export const CMC = 'https://tokens.pancakeswap.finance/cmc.json'
+// export const PITEAS = "https://raw.githubusercontent.com/piteasio/app-tokens/main/piteas-tokenlist.json"
+// export const PULSEX = "https://tokens.dextop.pro/pulsex-list.json"
 
 // List of official tokens list
 export const OFFICIAL_LISTS = []

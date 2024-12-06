@@ -17,11 +17,16 @@ export enum ViewMode {
   CARD = 'CARD',
 }
 
+export const updateUserExpertMode = createAction<{ userExpertMode: boolean }>('user/updateUserExpertMode')
 export const addSerializedToken = createAction<{ serializedToken: SerializedWrappedToken }>('user/addSerializedToken')
 export const removeSerializedToken = createAction<{ chainId: number; address: string }>('user/removeSerializedToken')
 export const addSerializedPair = createAction<{ serializedPair: SerializedPair }>('user/addSerializedPair')
 export const removeSerializedPair = createAction<{ chainId: number; tokenAAddress: string; tokenBAddress: string }>(
   'user/removeSerializedPair',
+)
+
+export const updateUserExpertModeAcknowledgementShow = createAction<{ userExpertModeAcknowledgementShow: boolean }>(
+  'user/updateUserExpertModeAcknowledgementShow',
 )
 
 export const updateUserSlippageTolerance = createAction<{ userSlippageTolerance: number }>(

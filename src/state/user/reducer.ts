@@ -15,6 +15,8 @@ import {
   removeSerializedToken,
   setSubgraphHealthIndicatorDisplayed,
   updateGasPrice,
+  updateUserExpertMode,
+  updateUserExpertModeAcknowledgementShow,
   updateUserFarmStakedOnly,
   updateUserFarmsViewMode,
   updateUserPoolStakedOnly,
@@ -24,6 +26,8 @@ import {
 export interface UserState {
   // the timestamp of the last updateVersion action
   lastUpdateVersionTimestamp?: number
+
+  userExpertMode: boolean
 
   tokens: {
     [chainId: number]: {
@@ -48,6 +52,7 @@ export interface UserState {
   userLimitOrderAcceptedWarning: boolean
   userPredictionChartDisclaimerShow: boolean
   userPredictionChainlinkChartDisclaimerShow: boolean
+  userExpertModeAcknowledgementShow: boolean
   userUsernameVisibility: boolean
   gasPrice: string
   watchlistTokens: string[]
@@ -60,6 +65,7 @@ function pairKey(token0Address: string, token1Address: string) {
 }
 
 export const initialState: UserState = {
+  userExpertMode: false,
   tokens: {},
   pairs: {},
   isSubgraphHealthIndicatorDisplayed: false,
@@ -73,6 +79,7 @@ export const initialState: UserState = {
   userLimitOrderAcceptedWarning: false,
   userPredictionChartDisclaimerShow: true,
   userPredictionChainlinkChartDisclaimerShow: true,
+  userExpertModeAcknowledgementShow: true,
   userUsernameVisibility: false,
   gasPrice: GAS_PRICE_GWEI.rpcDefault,
   watchlistTokens: [],
@@ -82,6 +89,9 @@ export const initialState: UserState = {
 
 export default createReducer(initialState, (builder) =>
   builder
+    .addCase(updateUserExpertMode, (state, action) => {
+      state.userExpertMode = action.payload.userExpertMode
+    })
     .addCase(addSerializedToken, (state, { payload: { serializedToken } }) => {
       if (!state.tokens) {
         state.tokens = {}
@@ -125,6 +135,9 @@ export default createReducer(initialState, (builder) =>
     })
     .addCase(updateUserPoolsViewMode, (state, { payload: { userPoolsViewMode } }) => {
       state.userPoolsViewMode = userPoolsViewMode
+    })
+    .addCase(updateUserExpertModeAcknowledgementShow, (state, { payload: { userExpertModeAcknowledgementShow } }) => {
+      state.userExpertModeAcknowledgementShow = userExpertModeAcknowledgementShow
     })
     .addCase(updateUserFarmsViewMode, (state, { payload: { userFarmsViewMode } }) => {
       state.userFarmsViewMode = userFarmsViewMode

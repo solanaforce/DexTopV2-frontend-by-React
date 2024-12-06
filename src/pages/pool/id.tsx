@@ -1,13 +1,12 @@
 import { useRouter } from 'next/router'
 import { CHAIN_IDS } from 'utils/wagmi'
 import PoolPage from 'views/Liquidity/V3Pool'
+import { useTokenIdParams } from 'views/RemoveLiquidityV3/hooks/useTokenIdParams'
 
 const PoolItemPage = () => {
-	const router = useRouter()
+	const { tokenId } = useTokenIdParams()
 
-	const { tokenId: tokenIdFromUrl } = router.query
-
-	const parsedTokenId = tokenIdFromUrl ? BigInt(tokenIdFromUrl as string) : undefined
+	const parsedTokenId = tokenId ? BigInt(tokenId as string) : undefined
 
 	return <PoolPage parsedTokenId={parsedTokenId} />
 }

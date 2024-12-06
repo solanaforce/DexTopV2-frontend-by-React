@@ -86,9 +86,9 @@ const LightGreyCard = styled(Box)<{
   `
 
 export const BodyWrapper = styled(Card)`
-  background: ${({theme}) => theme.colors.background};
-  border: 1px solid ${({ theme }) => theme.colors.backgroundAlt};
-  border-radius: 24px;
+  // background: ${({theme}) => theme.colors.background};
+  border: 3px solid ${({ theme }) => theme.colors.textDisabled};
+  border-radius: 8px;
   padding: 12px;
   max-width: 858px;
   width: 100%;
@@ -515,14 +515,14 @@ export default function PoolPage({parsedTokenId}: {parsedTokenId: bigint | undef
 								{isMobile && (
 									<>
 										<NextLinkFromReactRouter
-											to={`/increase/${currencyId(currency0)}/${currencyId(currency1)}/${feeAmount}/${tokenId}`}
+											to={`/increase?currency=${currencyId(currency0)}&currency=${currencyId(currency1)}&fee=${feeAmount}&tokenId=${tokenId}`}
 										>
 											<Button disabled={!isOwnNFT} width="100%" mb="8px" height="36px" variant="primary">
 												Add
 											</Button>
 										</NextLinkFromReactRouter>
 										{!removed && (
-											<NextLinkFromReactRouter to={`/remove/${tokenId}`}>
+											<NextLinkFromReactRouter to={`/remove?tokenId=${tokenId}`}>
 												<Button disabled={!isOwnNFT} variant="secondary" width="100%" mb="8px" height="36px">
 													Remove
 												</Button>
@@ -762,7 +762,7 @@ export default function PoolPage({parsedTokenId}: {parsedTokenId: bigint | undef
 							{!isMobile && currency0 && currency1 && <Flex justifyContent="space-between" alignItems="center" width="100%" style={{ gap: '16px' }}>
 								<Button 
 									as={NextLinkFromReactRouter}
-									to={`/increase/${currencyId(currency0)}/${currencyId(currency1)}/${feeAmount}/${tokenId}`}
+									to={`/increase?currency=${currencyId(currency0)}&currency=${currencyId(currency1)}&fee=${feeAmount}&tokenId=${tokenId}`}
 									disabled={!isOwnNFT} 
 									width="100%" 
 									height="48px"
@@ -773,7 +773,7 @@ export default function PoolPage({parsedTokenId}: {parsedTokenId: bigint | undef
 								{!removed && (
 									<Button 
 										as={NextLinkFromReactRouter}
-										to={`/remove/${tokenId}`}
+										to={`/remove?tokenId=${tokenId}`}
 										disabled={!isOwnNFT} 
 										variant="secondary" 
 										width="100%" 
@@ -1097,30 +1097,4 @@ function PositionHistoryRow({
       </AutoColumn>
     </AtomBox>
   )
-}
-
-export const getStaticPaths: GetStaticPaths = () => {
-  return {
-    paths: [],
-    fallback: true,
-  }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { tokenId } = params ?? {}
-
-  const isNumberReg = /^\d+$/
-
-  if (!(tokenId as string)?.match(isNumberReg)) {
-    return {
-      redirect: {
-        statusCode: 303,
-        destination: `/add`,
-      },
-    }
-  }
-
-  return {
-    props: {},
-  }
 }

@@ -6,14 +6,14 @@ import { SpinnerProps } from "./types";
 const StyledImage = styled.img`
   width: 120px;
   height: 120px;
-  animation: rotateImage 5s linear infinite;
-  @keyframes rotateImage {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  // animation: rotateImage 5s linear infinite;
+  // @keyframes rotateImage {
+  //   from {
+  //       transform: rotate(0deg);
+  //   }
+  //   to {
+  //       transform: rotate(360deg);
+  //   }
 }
 `
 

@@ -65,7 +65,7 @@ const Logo: React.FC<React.PropsWithChildren<Props>> = ({ href, isMobile }) => {
       )}
       {!isMobile ? <StyledLink href={href} as={linkComponent} aria-label="Pancake home page">
         <Box>
-          <Text color="text" fontSize="20px" bold>DEXTOP</Text>
+          <Text color="white" fontSize="20px" bold>DEXTOP</Text>
         </Box>
       </StyledLink> : <></>}
     </Flex>

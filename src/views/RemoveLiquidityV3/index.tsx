@@ -352,7 +352,7 @@ function Remove({ tokenId }: { tokenId?: bigint }) {
     	<Flex justifyContent="center" mt="40px">
 				<BodyWrapper>
 					<AppHeader
-						backTo={`/pool/${tokenId}`}
+						backTo={`/pool/id?tokenId=${tokenId}`}
 						title={`Remove ${liquidityValue0?.currency?.symbol ?? ''}-${liquidityValue1?.currency?.symbol ?? ''} Liquidity`}
 						noConfig
 					/>

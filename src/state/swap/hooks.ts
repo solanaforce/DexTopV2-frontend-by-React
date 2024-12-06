@@ -4,6 +4,7 @@ import tryParseAmount from 'utils/tryParseAmount'
 import { useTradeExactIn, useTradeExactOut } from 'hooks/Trades'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useNativeCurrency from 'hooks/useNativeCurrency'
+import { useAtom, useAtomValue } from 'jotai'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 import { useEffect, useMemo, useState } from 'react'
@@ -17,10 +18,10 @@ import { AppState, useAppDispatch } from '../index'
 import { useUserSlippageTolerance } from '../user/hooks'
 import { useCurrencyBalances } from '../wallet/hooks'
 import { Field, replaceSwapState } from './actions'
-import { SwapState } from './reducer'
+import { SwapState, swapReducerAtom } from './reducer'
 
-export function useSwapState(): AppState['swap'] {
-  return useSelector<AppState, AppState['swap']>((state) => state.swap)
+export function useSwapState() {
+  return useAtomValue(swapReducerAtom)
 }
 
 // TODO: update
@@ -74,7 +75,7 @@ export function useDerivedSwapInfo(
   independentField: Field,
   typedValue: string,
   inputCurrency: Currency | undefined,
-  outputCurrency: Currency | undefined,
+  outputCurrency: Currency | undefined, 
   recipient: string | undefined,
 ): {
   currencies: { [field in Field]?: Currency }
@@ -216,7 +217,7 @@ export function useDefaultsFromURLSearch():
   | { inputCurrencyId: string | undefined; outputCurrencyId: string | undefined }
   | undefined {
   const { chainId } = useActiveChainId()
-  const dispatch = useAppDispatch()
+  const [, dispatch] = useAtom(swapReducerAtom)
   const native = useNativeCurrency()
   const { query } = useRouter()
   const [result, setResult] = useState<

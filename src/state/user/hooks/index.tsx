@@ -26,6 +26,8 @@ import {
   removeSerializedToken,
   setSubgraphHealthIndicatorDisplayed,
   updateGasPrice,
+  updateUserExpertMode,
+  updateUserExpertModeAcknowledgementShow,
   updateUserFarmStakedOnly,
   updateUserFarmsViewMode,
   updateUserPoolStakedOnly,
@@ -55,6 +57,21 @@ export function useSubgraphHealthIndicatorManager() {
   )
 
   return [isSubgraphHealthIndicatorDisplayed, setSubgraphHealthIndicatorDisplayedPreference] as const
+}
+
+export function useIsExpertMode(): boolean {
+  return useSelector<AppState, AppState['user']['userExpertMode']>((state) => state.user.userExpertMode)
+}
+
+export function useExpertModeManager(): [boolean, () => void] {
+  const dispatch = useAppDispatch()
+  const expertMode = useIsExpertMode()
+
+  const toggleSetExpertMode = useCallback(() => {
+    dispatch(updateUserExpertMode({ userExpertMode: !expertMode }))
+  }, [expertMode, dispatch])
+
+  return [expertMode, toggleSetExpertMode]
 }
 
 export function useUserSlippageTolerance(): [number, (slippage: number) => void] {
@@ -139,6 +156,25 @@ export function useUserFarmsViewMode(): [ViewMode, (viewMode: ViewMode) => void]
   )
 
   return [userFarmsViewMode, setUserFarmsViewMode]
+}
+
+export function useUserExpertModeAcknowledgementShow(): [boolean, (showAcknowledgement: boolean) => void] {
+  const dispatch = useAppDispatch()
+  const userExpertModeAcknowledgementShow = useSelector<
+    AppState,
+    AppState['user']['userExpertModeAcknowledgementShow']
+  >((state) => {
+    return state.user.userExpertModeAcknowledgementShow
+  })
+
+  const setUserExpertModeAcknowledgementShow = useCallback(
+    (showAcknowledgement: boolean) => {
+      dispatch(updateUserExpertModeAcknowledgementShow({ userExpertModeAcknowledgementShow: showAcknowledgement }))
+    },
+    [dispatch],
+  )
+
+  return [userExpertModeAcknowledgementShow, setUserExpertModeAcknowledgementShow]
 }
 
 export function useAddUserToken(): (token: ERC20Token) => void {

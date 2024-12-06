@@ -12,21 +12,22 @@ const InputPanel = styled.div`
   display: flex;
   flex-flow: column nowrap;
   position: relative;
-  border-radius: 1.25rem;
-  background-color: ${({ theme }) => theme.colors.backgroundAlt};
+  border-radius: 8px;
+  // background-color: ${({ theme }) => theme.colors.backgroundAlt};
   z-index: 1;
   width: 100%;
+  padding-bottom: 20px;
 `
 
 const ContainerRow = styled.div<{ error: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 1.25rem;
-  border: 1px solid ${({ error, theme }) => (error ? theme.colors.failure : theme.colors.background)};
+  border-radius:8px;
+  border: 2px solid ${({ error, theme }) => (error ? theme.colors.failure : theme.colors.cardBorder)};
   transition: border-color 300ms ${({ error }) => (error ? 'step-end' : 'step-start')},
     color 500ms ${({ error }) => (error ? 'step-end' : 'step-start')};
-  background-color: ${({ theme }) => theme.colors.backgroundAlt};
+  background-color: ${({ theme }) => theme.colors.input};
 `
 
 const InputContainer = styled.div`
@@ -98,7 +99,7 @@ export default function AddressInputPanel({
         <InputContainer>
           <AutoColumn gap="md">
             <RowBetween>
-              <Text>Recipient</Text>
+              <Text small>Recipient</Text>
               {address && chainId && (
                 <Link external small href={getBlockExploreLink(address, 'address', chainId)}>
                   (

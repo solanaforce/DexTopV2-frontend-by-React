@@ -6,7 +6,7 @@ import storage from 'redux-persist/lib/storage'
 import farmsReducer from './farms'
 import { updateVersion } from './global/actions'
 import globalReducer from './global/reducer'
-import swap from './swap/reducer'
+// import swap from './swap/reducer'
 import burn from './burn/reducer'
 import mint from './mint/reducer'
 import transactions from './transactions/reducer'
@@ -29,7 +29,7 @@ const persistedReducer = persistReducer(
     farms: farmsReducer,
 
     // Exchange
-    swap,
+    // swap,
     burn,
     mint,
     transactions,

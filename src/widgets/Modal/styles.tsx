@@ -13,6 +13,7 @@ export const ModalHeader = styled(Flex)<{ background?: string; headerBorderColor
   background: transparent;
   display: flex;
   padding: 20px 20px 0px 20px;
+  height: 100%;
 
   ${({ theme }) => theme.mediaQueries.md} {
     background: ${({ background }) => background || "transparent"};
@@ -64,21 +65,21 @@ export const ModalContainer = styled(MotionBox)`
   overflow: hidden;
   background: ${({ theme }) => theme.modal.background};
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
-  border-radius: 12px 12px 0px 0px;
+  border-radius: 8px 8px 0px 0px;
   border: 1px solid ${({ theme }) => theme.colors.backgroundAlt};
   width: 100%;
   max-height: calc(var(--vh, 1vh) * 100);
   z-index: ${({ theme }) => theme.zIndices.modal};
   position: absolute;
   bottom: 0;
-  max-width: none !important;
+  // max-width: none !important;
   // min-height: 80vh;
 
   ${({ theme }) => theme.mediaQueries.md} {
     width: auto;
     position: auto;
     bottom: auto;
-    border-radius: 20px;
+    border-radius: 8px;
     max-height: 100vh;
   }
 ` as typeof MotionBox;

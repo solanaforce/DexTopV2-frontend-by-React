@@ -33,7 +33,7 @@ const Menu = (props) => {
         rightSide={
           <>
             <ConnectWalletButton />
-            <GlobalSettings mode={SettingsMode.SWAP_LIQUIDITY} />
+            <GlobalSettings mode={SettingsMode.DEXTOP} />
           </>
         }
         chainId={chainId}
