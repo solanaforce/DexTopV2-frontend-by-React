@@ -47,9 +47,9 @@ import Dots from 'components/Loader/Dots'
 import { useBurnActionHandlers, useDerivedBurnInfo, useBurnState } from 'state/burn/hooks'
 import { Field } from 'state/burn/actions'
 import { useGasPrice, useUserSlippageTolerance } from 'state/user/hooks'
+import { useSignTypedData } from 'wagmi'
 import { InternalLink } from './components/InternalLink'
 import ConfirmLiquidityModal from '../Swap/components/ConfirmRemoveLiquidityModal'
-import { useSignTypedData } from 'wagmi'
 
 const BorderCard = styled.div`
   border: solid 1px ${({ theme }) => theme.colors.cardBorder};
