@@ -413,11 +413,11 @@ export default function PoolPage({parsedTokenId}: {parsedTokenId: bigint | undef
 
   const isOwnNFT = isStakedInMCv3 || ownsNFT
 
-  if (!isLoading && poolState === PoolState.NOT_EXISTS) {
-    return <NotFound LinkComp={Link}>
-    <NextSeo title="404" />
-  </NotFound>
-  }
+  // if (!isLoading && poolState === PoolState.NOT_EXISTS) {
+  //   return <NotFound LinkComp={Link}>
+  //   <NextSeo title="404" />
+  // </NotFound>
+  // }
 
   // const farmingTips =
   //   inRange && ownsNFT && hasActiveFarm && !isStakedInMCv3 ? (

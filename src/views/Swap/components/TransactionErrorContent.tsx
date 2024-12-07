@@ -19,9 +19,9 @@ export function TransactionErrorContent({
       <AutoColumn justify="center">
         <ErrorIcon color="failure" width="64px" />
         <Text color="failure" style={{ textAlign: "center", width: "85%", wordBreak: "break-word" }}>
-          {message}
+          {/* {message} */}
+          {message?.toString().includes("User rejected the request") ? "User rejected the request" : message}
         </Text>
-        {/* {message.toString().includes("User rejected the request") ? "User rejected the request" : ""} */}
       </AutoColumn>
 
       {onDismiss ? (

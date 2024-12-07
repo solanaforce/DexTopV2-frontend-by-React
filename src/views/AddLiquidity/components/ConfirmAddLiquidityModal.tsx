@@ -105,7 +105,7 @@ const ConfirmAddLiquidityModal: React.FC<
   const confirmationContent = useCallback(
     () =>
       liquidityErrorMessage ? (
-        <TransactionErrorContent message="" onDismiss={onDismiss} />
+        <TransactionErrorContent message={liquidityErrorMessage} onDismiss={onDismiss} />
       ) : (
         <ConfirmationModalContent topContent={modalHeader} bottomContent={modalBottom} />
       ),
