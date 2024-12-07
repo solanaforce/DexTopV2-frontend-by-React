@@ -145,10 +145,10 @@ const CandleChart = ({
     if (chartCreated && data && data?.length > 0) {
       const series = chartCreated.addCandlestickSeries({
         upColor: baseColors.success,
-        downColor: baseColors.failure,
-        borderDownColor: baseColors.failure,
+        downColor: baseColors.failure33,
+        borderDownColor: baseColors.failure33,
         borderUpColor: baseColors.success,
-        wickDownColor: baseColors.failure,
+        wickDownColor: baseColors.failure33,
         wickUpColor: baseColors.success,
       })
 
