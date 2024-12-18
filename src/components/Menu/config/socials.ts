@@ -34,16 +34,24 @@ const config: (
       showItemsOnMobile: true,
       items: [
         {
-          label: 'Swap',
-          href: '/swap',
+          label: 'About',
+          href: 'https://dextop.pro/',
+          type: DropdownMenuItemType.EXTERNAL_LINK
         },
         {
-          label: 'Liquidity',
-          href: '/pool',
+          label: 'Docs',
+          href: 'https://info.dextop.pro/',
+          type: DropdownMenuItemType.EXTERNAL_LINK
         },
         {
-          label: 'Info',
-          href: '/info',
+          label: 'Chart',
+          href: 'https://dexscreener.com/pulsechain/dextop',
+          type: DropdownMenuItemType.EXTERNAL_LINK
+        },
+        {
+          label: 'Burn',
+          href: 'https://dex.dextop.pro/burn',
+          type: DropdownMenuItemType.EXTERNAL_LINK
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },

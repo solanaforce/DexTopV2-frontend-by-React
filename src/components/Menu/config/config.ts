@@ -32,27 +32,15 @@ const config: (
   [
     {
       label: 'Swap',
-      icon: TradeIcon,
-      fillIcon: TradeIcon,
       href: '/swap',
-      showItemsOnMobile: true,
-      items: [].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: 'Pool',
-      icon: TradeIcon,
-      fillIcon: TradeIcon,
+      label: 'Liquidity',
       href: '/pool',
-      showItemsOnMobile: true,
-      items: [].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
       label: 'Info',
-      href: '/info',
-      icon: EarnIcon,
-      fillIcon: EarnFillIcon,
-      image: '/images/decorations/pe2.png',
-      items: [].map((item) => addMenuItemSupported(item, chainId)),
+      href: '/info'
     },
   ].map((item) => addMenuItemSupported(item, chainId))
 

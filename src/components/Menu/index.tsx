@@ -22,7 +22,7 @@ const Menu = (props) => {
   const cakePriceUsd = useBUSDPrice(GTOKEN[chainId])
   const { pathname } = useRouter()
 
-  const { menuItems, mobileItems } = useMenuItems()
+  const { menuItems, mobileItems, socialItems } = useMenuItems()
 
   const activeMenuItem = getActiveMenuItem({ menuConfig: menuItems, pathname })
   const activeSubMenuItem = getActiveSubMenuItem({ menuItem: activeMenuItem, pathname })
@@ -42,6 +42,7 @@ const Menu = (props) => {
         cakePriceUsd={cakePriceUsd}
         links={menuItems}
         mobileLinks={mobileItems}
+        socialLinks={socialItems}
         subLinks={activeMenuItem?.hideSubNav || activeSubMenuItem?.hideSubNav ? [] : activeMenuItem?.items}
         activeItem={activeMenuItem?.href}
         activeSubItem={activeSubMenuItem?.href}

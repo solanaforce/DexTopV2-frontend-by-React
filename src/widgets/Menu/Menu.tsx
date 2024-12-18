@@ -79,6 +79,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   cakePriceUsd,
   links,
   mobileLinks,
+  socialLinks,
   activeItem,
   activeSubItem,
   children,
@@ -143,19 +144,19 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                   href="/"
                   isMobile={isMobile}
                 />
-                {/* <AtomBox display={{ xs: "none", md: "block" }}>
+                <AtomBox display={{ xs: "none", md: "block" }}>
                   <TopMenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />
                 </AtomBox>
                 <AtomBox display={{ xs: "block", md: "none" }}>
                   <TopMenuItems items={mobileLinks} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />
-                </AtomBox> */}
+                </AtomBox>
               </Flex>
               <Flex alignItems="center" height="100%">
                 {/* <AtomBox mr="20px" display={{ xs: "none", lg: "block" }}>
                   <CakePrice chainId={chainId} showSkeleton={false} cakePriceUsd={cakePriceUsd} />
                 </AtomBox> */}
                 {rightSide}
-                <TopRightMenuItems items={mobileLinks} activeItem={activeItem} activeSubItem={activeSubItem} />
+                <TopRightMenuItems items={socialLinks} activeItem={activeItem} activeSubItem={activeSubItem} />
               </Flex>
             </StyledNav>
           </FixedContainer>

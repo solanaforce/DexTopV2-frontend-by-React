@@ -69,7 +69,7 @@ export const StyledTopMenuItem = styled.a<StyledMenuItemProps>`
   align-items: center;
   cursor: pointer;
 
-  color: ${({ theme, $isActive }) => ($isActive ? theme.colors.primary : theme.colors.text)};
+  color: ${({ theme, $isActive }) => ($isActive ? theme.colors.primaryBright : theme.colors.backgroundDisabled)};
   font-size: 16px;
   opacity: ${({ $isDisabled }) => ($isDisabled ? 0.5 : 1)};
   pointer-events: ${({ $isDisabled }) => ($isDisabled ? "none" : "inherit")};
@@ -99,7 +99,7 @@ export const StyledTopMenuItem = styled.a<StyledMenuItemProps>`
   `}
 
   &:hover {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primaryBright};
     ${({ $variant }) => $variant === "default" && "border-radius: 8px;"};
   }
 `;

@@ -15,6 +15,7 @@ export interface NavProps {
   banner?: ReactElement;
   links: Array<MenuItemsType>;
   mobileLinks: Array<MenuItemsType>;
+  socialLinks: Array<MenuItemsType>;
   subLinks?: Array<SubMenuItemsType>;
   activeItem?: string;
   activeSubItem?: string;
