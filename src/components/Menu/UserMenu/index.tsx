@@ -1,15 +1,4 @@
 import { ChainId } from 'config/chains'
-// import {
-//   Box,
-//   Flex,
-//   LogoutIcon,
-//   RefreshIcon,
-//   useModal,
-//   UserMenu as UIKitUserMenu,
-//   UserMenuDivider,
-//   UserMenuItem,
-//   UserMenuVariant,
-// } from '@pancakeswap/uikit'
 import { Box, Flex } from 'components/Box'
 import { LogoutIcon, RefreshIcon } from 'components/Svg'
 import { useModal } from 'widgets/Modal'

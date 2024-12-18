@@ -140,13 +140,13 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
           <Flex justifyContent="space-between" mb="16px" flexDirection={['column', 'column', 'row']}>
             <Breadcrumbs mb="32px">
               <NextLinkFromReactRouter to={`/${v3InfoPath}${chainPath}${infoTypeParam}`}>
-                <Text color="primary">Info</Text>
+                <Text color="primaryBright">Info</Text>
               </NextLinkFromReactRouter>
               <NextLinkFromReactRouter to={`/${v3InfoPath}${chainPath}/pairs${infoTypeParam}`}>
-                <Text color="primary">Pairs</Text>
+                <Text color="primaryBright">Pairs</Text>
               </NextLinkFromReactRouter>
               <Flex>
-                <Text mr="8px">
+                <Text mr="8px" color="primaryBright">
                   {`${poolData.token0.symbol} / ${poolData.token1.symbol}
                 `}
                   <GreyBadge ml="4px" style={{ display: 'inline-block' }}>
@@ -158,6 +158,7 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
 
             <Flex justifyContent={[null, null, 'flex-end']} mt={['8px', '8px', 0]}>
               <LinkExternal
+                color="primaryBright"
                 mr="8px"
                 href={getBlockExploreLink(address, 'address', multiChainId[chainName])}
               >
@@ -174,7 +175,7 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
                 size={32}
                 chainName={chainName}
               />
-              <Text ml="38px" fontSize={isXs || isSm ? '24px' : '40px'} id="info-pool-pair-title">
+              <Text ml="38px" fontSize={isXs || isSm ? '24px' : '40px'} id="info-pool-pair-title" color="primaryBright">
                 {`${poolData.token0.symbol} / ${poolData.token1.symbol}`}{' '}
                 <GreyBadge ml="4px" style={{ display: 'inline-block' }}>
                   {feeTierPercent(poolData.feeTier)}
@@ -184,11 +185,11 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
             <Flex justifyContent="space-between" flexDirection={['column', 'column', 'column', 'row']}>
               <Flex flexDirection={['column', 'column', 'row']} mb={['8px', '8px', null]}>
                 <NextLinkFromReactRouter
-                  to={`/${v3InfoPath}${chainPath}/tokens/${poolData.token0.address}${infoTypeParam}`}
+                  to={`/${v3InfoPath}${chainPath}/tokens?address=${poolData.token0.address}${infoTypeParam}`}
                 >
                   <TokenButton>
                     <CurrencyLogo address={poolData.token0.address} size="24px" chainName={chainName} />
-                    <Text fontSize="16px" ml="4px" style={{ whiteSpace: 'nowrap' }} width="fit-content">
+                    <Text color="primaryBright" fontSize="16px" ml="4px" style={{ whiteSpace: 'nowrap' }} width="fit-content">
                       {`1 ${poolData.token0.symbol} =  ${formatAmount(poolData.token1Price, {
                         notation: 'standard',
                         displayThreshold: 0.001,
@@ -198,11 +199,11 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
                   </TokenButton>
                 </NextLinkFromReactRouter>
                 <NextLinkFromReactRouter
-                  to={`/${v3InfoPath}${chainPath}/tokens/${poolData.token1.address}${infoTypeParam}`}
+                  to={`/${v3InfoPath}${chainPath}/tokens?address=${poolData.token1.address}${infoTypeParam}`}
                 >
                   <TokenButton ml={[null, null, '10px']}>
                     <CurrencyLogo address={poolData.token1.address} size="24px" chainName={chainName} />
-                    <Text fontSize="16px" ml="4px" style={{ whiteSpace: 'nowrap' }} width="fit-content">
+                    <Text color="primaryBright" fontSize="16px" ml="4px" style={{ whiteSpace: 'nowrap' }} width="fit-content">
                       {`1 ${poolData.token1.symbol} =  ${formatAmount(poolData.token0Price, {
                         notation: 'standard',
                         displayThreshold: 0.001,
@@ -219,7 +220,9 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
                   }`}
                 >
                   <Button mr="8px" variant="secondary" height="48px" px="12px">
-                    Add V3 Liquidity
+                    <Text color="primaryBright">
+                      Add V3 Liquidity
+                    </Text>
                   </Button>
                 </NextLinkFromReactRouter>
                 <NextLinkFromReactRouter
@@ -351,7 +354,7 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
               </Box>
             </Card>
           </ContentLayout>
-          <Heading>Transactions</Heading>
+          <Heading color="primaryBright">Transactions</Heading>
           {transactions ? <TransactionTable transactions={transactions} /> : <LocalLoader fill={false} />}
         </AutoColumn>
       ) : (

@@ -158,9 +158,9 @@ const TokenPage: React.FC<{ address: string }> = ({ address }) => {
             <Box p="16px">
               <Text>
                 No pair has been created with this token yet. Create one
-                <NextLinkFromReactRouter style={{ display: 'inline', marginLeft: '6px' }} to={`/add/${address}`}>
+                {/* <NextLinkFromReactRouter style={{ display: 'inline', marginLeft: '6px' }} to={`/add/${address}`}>
                   here.
-                </NextLinkFromReactRouter>
+                </NextLinkFromReactRouter> */}
               </Text>
             </Box>
           </Card>
@@ -170,20 +170,20 @@ const TokenPage: React.FC<{ address: string }> = ({ address }) => {
               <Flex justifyContent="space-between" mb="24px" flexDirection={['column', 'column', 'row']}>
                 <Breadcrumbs mb="32px">
                   <NextLinkFromReactRouter to={`/${v3InfoPath}${chainPath}${infoTypeParam}`}>
-                    <Text color="primary">Info</Text>
+                    <Text color="primaryBright">Info</Text>
                   </NextLinkFromReactRouter>
                   <NextLinkFromReactRouter to={`/${v3InfoPath}${chainPath}/tokens${infoTypeParam}`}>
-                    <Text color="primary">Tokens</Text>
+                    <Text color="primaryBright">Tokens</Text>
                   </NextLinkFromReactRouter>
                   <Flex>
-                    <Text mr="8px">{subgraphTokenSymbol[address.toLowerCase()] ?? tokenData.symbol}</Text>
-                    <Text>{`(${truncateHash(address)})`}</Text>
+                    <Text mr="8px" color="primaryBright">{subgraphTokenSymbol[address.toLowerCase()] ?? tokenData.symbol}</Text>
+                    <Text color="primaryBright">{`(${truncateHash(address)})`}</Text>
                   </Flex>
                 </Breadcrumbs>
                 <Flex justifyContent={[null, null, 'flex-end']} mt={['8px', '8px', 0]}>
                   <LinkExternal
                     mr="8px"
-                    color="primary"
+                    color="primaryBright"
                     href={getBlockExploreLink(address, 'address', multiChainId[chainName])}
                   >
                     View on {multiChainScan[chainName]}
@@ -201,6 +201,7 @@ const TokenPage: React.FC<{ address: string }> = ({ address }) => {
                   <Flex alignItems="center">
                     <CurrencyLogo size="32px" address={address} chainName={chainName} />
                     <Text
+                      color="primaryBright"
                       ml="12px"
                       lineHeight="0.7"
                       fontSize={isXs || isSm ? '24px' : '40px'}
@@ -208,12 +209,12 @@ const TokenPage: React.FC<{ address: string }> = ({ address }) => {
                     >
                       {subgraphTokenName[address.toLowerCase()] ?? tokenData.name}
                     </Text>
-                    <Text ml="12px" lineHeight="1" color="textSubtle" fontSize={isXs || isSm ? '14px' : '20px'}>
+                    <Text ml="12px" lineHeight="1" fontSize={isXs || isSm ? '14px' : '20px'} color="primaryBright">
                       ({subgraphTokenSymbol[address.toLowerCase()] ?? tokenData.symbol})
                     </Text>
                   </Flex>
                   <Flex mt="8px" ml="46px" alignItems="center">
-                    <Text mr="16px" fontSize="24px">
+                    <Text mr="16px" fontSize="24px" color="primaryBright">
                       ${formatAmount(tokenData.priceUSD, { notation: 'standard' })}
                     </Text>
                     <Percent value={tokenData.priceUSDChange} fontWeight={600} />
@@ -222,7 +223,7 @@ const TokenPage: React.FC<{ address: string }> = ({ address }) => {
                 <Flex>
                   <NextLinkFromReactRouter to={`/add/${address}?chain=${CHAIN_QUERY_NAME[chainId]}`}>
                     <Button mr="8px" variant="secondary" height="48px" px="12px">
-                      Add V3 Liquidity
+                      <Text color="primaryBright">Add V3 Liquidity</Text>
                     </Button>
                   </NextLinkFromReactRouter>
                   <NextLinkFromReactRouter
@@ -329,9 +330,9 @@ const TokenPage: React.FC<{ address: string }> = ({ address }) => {
                 </Box>
               </Card>
             </ContentLayout>
-            <Heading>Pairs</Heading>
+            <Heading color="primaryBright">Pairs</Heading>
             <PoolTable poolDatas={formatPoolData} />
-            <Heading>Transactions</Heading>
+            <Heading color="primaryBright">Transactions</Heading>
             {transactions ? <TransactionTable transactions={transactions} /> : <LocalLoader fill={false} />}
           </AutoColumn>
         )

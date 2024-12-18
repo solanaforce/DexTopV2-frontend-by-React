@@ -32,7 +32,7 @@ const PoolsOverview: React.FC<React.PropsWithChildren> = () => {
           </Text>
         )}
       </Card> */}
-      <Heading scale="lg" mt="40px" mb="16px" id="info-pools-title">
+      <Heading scale="lg" mt="40px" mb="16px" id="info-pools-title" color="primaryBright">
         All Pairs
       </Heading>
       <PoolTable poolDatas={poolsData} />

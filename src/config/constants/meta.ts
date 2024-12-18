@@ -32,11 +32,11 @@ const getPathList = (): PathList => {
         description: 'View statistics for DexTop.'
       },
       '/info/pairs': {
-        title: 'Pairs - Info',
+        title: 'Pair - Info',
         description: 'View statistics for DexTop.'
       },
       '/info/tokens': {
-        title: "Tokens - Info",
+        title: "Token - Info",
         description: 'View statistics for DexTop.'
       }
     },

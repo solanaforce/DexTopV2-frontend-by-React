@@ -319,7 +319,7 @@ const Search = () => {
               return (
                 <HoverRowLink
                   onClick={() =>
-                    handleItemClick(`/${v3InfoPath}${chainPath}/tokens/${token.address}${stableSwapQuery}`)
+                    handleItemClick(`/${v3InfoPath}${chainPath}/tokens?address=${token.address}${stableSwapQuery}`)
                   }
                   key={`searchTokenResult${token.address}`}
                 >
@@ -385,7 +385,7 @@ const Search = () => {
             {poolForList?.slice(0, poolsShown).map((p) => {
               return (
                 <HoverRowLink
-                  onClick={() => handleItemClick(`/${v3InfoPath}${chainPath}/pairs/${p.address}${stableSwapQuery}`)}
+                  onClick={() => handleItemClick(`/${v3InfoPath}${chainPath}/pairs?address=${p.address}${stableSwapQuery}`)}
                   key={`searchPoolResult${p.address}`}
                 >
                   <ResponsiveGrid>

@@ -89,6 +89,7 @@ export const StyledCMCLink = styled(Link)`
 `
 
 export const ProtocolWrapper = styled.div`
+  margin-top: 20px;
   display: none;
   ${({ theme }) => theme.mediaQueries.md} {
     display: block;

@@ -35,7 +35,7 @@ const TokensOverview: React.FC<React.PropsWithChildren> = () => {
         </Card>
       )} */}
       <TopTokenMovers />
-      <Heading scale="lg" mt="40px" mb="16px" id="info-tokens-title">
+      <Heading scale="lg" mt="40px" mb="16px" id="info-tokens-title" color="primaryBright">
         All Tokens
       </Heading>
       <TokenTable tokenDatas={formattedTokens} />

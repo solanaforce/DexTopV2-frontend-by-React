@@ -109,7 +109,7 @@ export default function Home() {
 
   return (
     <Page>
-      <Heading scale="lg" mb="16px">
+      <Heading scale="lg" mb="16px" color='primaryBright'>
         DexTop Info & Analytics
       </Heading>
       <ChartCardsContainer>
@@ -229,16 +229,16 @@ export default function Home() {
           </RowBetween>
         </DarkGreyCard>
       </ProtocolWrapper>
-      <Heading scale="lg" mt="40px" mb="16px">
+      <Heading scale="lg" mt="40px" mb="16px" color="primaryBright">
         Top Tokens
       </Heading>
       <TokenTable tokenDatas={formattedTokens} />
 
-      <Heading scale="lg" mt="40px" mb="16px">
+      <Heading scale="lg" mt="40px" mb="16px" color="primaryBright">
         Top Pairs
       </Heading>
       <PoolTable poolDatas={poolDatas} />
-      <Heading scale="lg" mt="40px" mb="16px">
+      <Heading scale="lg" mt="40px" mb="16px" color="primaryBright">
         Transactions
       </Heading>
 

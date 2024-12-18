@@ -77,7 +77,7 @@ const DataRow = ({ tokenData, index, chainPath }: { tokenData: TokenData; index:
   const chainName = useChainNameByQuery()
   const { isMobile } = useMatchBreakpoints()
   return (
-    <LinkWrapper to={`/${v3InfoPath}${chainPath}/tokens/${tokenData.address}`}>
+    <LinkWrapper to={`/${v3InfoPath}${chainPath}/tokens?address=${tokenData.address}`}>
       <ResponsiveGrid>
         <Text>{index + 1}</Text>
         <Flex>

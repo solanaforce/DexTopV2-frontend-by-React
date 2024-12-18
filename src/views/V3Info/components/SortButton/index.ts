@@ -23,7 +23,7 @@ export const SortButton = styled(Button)`
     fill: ${({ theme }) => (theme.isDark ? 'rgba(255, 255, 255, 0.2)' : '#B4ACCF')};
   }
   &.is-asc {
-    background: ${({ theme }) => (theme.isDark ? theme.colors.input : theme.colors.backgroundAlt)};
+    background: ${({ theme }) => (theme.isDark ? theme.colors.input : theme.colors.secondary80)};
     path:first-child {
       fill: rgba(255, 255, 255, 1);
     }
@@ -32,7 +32,7 @@ export const SortButton = styled(Button)`
     }
   }
   &.is-desc {
-    background: ${({ theme }) => (theme.isDark ? theme.colors.input : theme.colors.backgroundAlt)};
+    background: ${({ theme }) => (theme.isDark ? theme.colors.input : theme.colors.secondary80)};
     path:first-child {
       fill: rgba(255, 255, 255, 0.3);
     }

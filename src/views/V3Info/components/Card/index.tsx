@@ -25,7 +25,7 @@ export const GreyCard = styled(Card)`
 `
 
 export const DarkGreyCard = styled(Card)`
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.backgroundAlt};
 `
 
 export const OutlineCard = styled(Card)`
@@ -67,7 +67,7 @@ export const ScrollableX = styled.div`
 export const GreyBadge = styled(Card)`
   width: fit-content;
   border-radius: 8px;
-  background: ${({ theme }) => theme.colors.success19};
+  background: ${({ theme }) => theme.colors.success};
   color: ${({ theme }) => theme.colors.text};
   padding: 4px 6px;
   font-weight: 400;

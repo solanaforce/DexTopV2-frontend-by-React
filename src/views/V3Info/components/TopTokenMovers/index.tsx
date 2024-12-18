@@ -40,7 +40,7 @@ const DataCard = ({ tokenData }: { tokenData: TokenData }) => {
   const chainName = useChainNameByQuery()
   const chainPath = useMultiChainPath()
   return (
-    <CardWrapper to={`/${v3InfoPath}${chainPath}/tokens/${tokenData.address}`}>
+    <CardWrapper to={`/${v3InfoPath}${chainPath}/tokens?address=${tokenData.address}`}>
       <TopMoverCard>
         <Flex>
           <Box width="32px" height="32px">

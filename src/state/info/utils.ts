@@ -12,7 +12,7 @@ export function getTokenInfoPath(
   stableSwapPath = '',
 ) {
   // return `/info${dataSource === InfoDataSource.V3 ? '/v3' : ''}${multiChainPaths[chainId]}/tokens/${address}?chain=${
-    return `/info${multiChainPaths[chainId]}/tokens/${address}?chain=${
+    return `/info${multiChainPaths[chainId]}/tokens?address=${address}&chain=${
     CHAIN_QUERY_NAME[chainId]
   }${stableSwapPath.replace('?', '&')}`
 }

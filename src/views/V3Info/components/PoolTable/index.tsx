@@ -63,7 +63,7 @@ const SORT_FIELD = {
 const DataRow = ({ poolData, index, chainPath }: { poolData: PoolData; index: number; chainPath: string }) => {
   const chainName = useChainNameByQuery()
   return (
-    <LinkWrapper href={`/${v3InfoPath}${chainPath}/pairs/${poolData.address}`}>
+    <LinkWrapper href={`/${v3InfoPath}${chainPath}/pairs?address=${poolData.address}`}>
       <ResponsiveGrid>
         <Text fontWeight={400}>{index + 1}</Text>
         <Text fontWeight={400}>
