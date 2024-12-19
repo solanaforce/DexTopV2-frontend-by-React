@@ -157,8 +157,8 @@ const CandleChart = ({
       series.applyOptions({
         priceFormat: {
           type: 'price',
-          precision: 4,
-          minMove: 0.0001,
+          precision: 7,
+          minMove: 0.0000001,
         },
       })
 

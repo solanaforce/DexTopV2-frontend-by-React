@@ -215,7 +215,7 @@ const PoolPage: React.FC<{ address: string }> = ({ address }) => {
               </Flex>
               <Flex>
                 <NextLinkFromReactRouter
-                  to={`/add/${poolData.token0.address}/${poolData.token1.address}?chain=${
+                  to={`/add?currency=${poolData.token0.address}&currency=${poolData.token1.address}?chain=${
                     CHAIN_QUERY_NAME[multiChainId[chainName]]
                   }`}
                 >

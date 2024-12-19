@@ -83,7 +83,7 @@ const TokenPage: React.FC<{ address: string }> = ({ address }) => {
   // const { chainId } = useActiveChainId()
   // eslint-disable-next-line no-param-reassign
   address = address.toLowerCase()
-  const cmcLink = useCMCLink(address)
+  // const cmcLink = useCMCLink(address)
   const { isDark } = useTheme()
 
   // scroll on page view
@@ -188,11 +188,11 @@ const TokenPage: React.FC<{ address: string }> = ({ address }) => {
                   >
                     View on {multiChainScan[chainName]}
                   </LinkExternal>
-                  {cmcLink && (
+                  {/* {cmcLink && (
                     <StyledCMCLink href={cmcLink} rel="noopener noreferrer nofollow" target="_blank">
                       <Image src="/images/CMC-logo.svg" height={22} width={22} alt='View token on CoinMarketCap' />
                     </StyledCMCLink>
-                  )}
+                  )} */}
                   {/* <SaveIcon fill={watchlistTokens.includes(address)} onClick={() => addWatchlistToken(address)} /> */}
                 </Flex>
               </Flex>
@@ -221,7 +221,7 @@ const TokenPage: React.FC<{ address: string }> = ({ address }) => {
                   </Flex>
                 </Flex>
                 <Flex>
-                  <NextLinkFromReactRouter to={`/add/${address}?chain=${CHAIN_QUERY_NAME[chainId]}`}>
+                  <NextLinkFromReactRouter to={`/add?currency=${address}&currency=&chain=${CHAIN_QUERY_NAME[chainId]}`}>
                     <Button mr="8px" variant="secondary" height="48px" px="12px">
                       <Text color="primaryBright">Add V3 Liquidity</Text>
                     </Button>

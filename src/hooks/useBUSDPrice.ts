@@ -12,7 +12,7 @@ import {
 } from 'libraries/swap-sdk'
 import { useReadContract } from 'wagmi'
 import { lpTokenABI } from 'config/abi/lpTokenAbi'
-import { GTOKEN, USDT} from 'libraries/tokens'
+import { GTOKEN, USDC, USDT} from 'libraries/tokens'
 import { useMemo } from 'react'
 import getLpAddress from 'utils/getLpAddress'
 import { multiplyPriceByAmount } from 'utils/prices'
@@ -43,7 +43,7 @@ export function useStablecoinPrice(
   const chainId = currency?.chainId ?? ChainId.ETHEREUM
   const { enabled, hideIfPriceImpactTooHigh } = { ...DEFAULT_CONFIG, ...config }
 
-  const stableCoin = chainId in ChainId ? USDT[chainId as ChainId] : undefined
+  const stableCoin = chainId in ChainId ? USDC[chainId as ChainId] : undefined
 
   const isStableCoin = currency && stableCoin && currency.wrapped.equals(stableCoin)
 
